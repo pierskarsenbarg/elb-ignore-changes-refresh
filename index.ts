@@ -57,6 +57,9 @@ const tg2 = new aws.lb.TargetGroup("tg2", {
     deregistrationDelay: 5
 }, {dependsOn: [lb]});
 
+export const tg2output = tg2.arn;
+export const tgoutput = tg.arn;
+
 const listener = new aws.lb.Listener("listener", {
     loadBalancerArn: lb.arn,
     port: 80,
@@ -75,6 +78,9 @@ const listener = new aws.lb.Listener("listener", {
             ],
           },
     }]
-}, {ignoreChanges: ["defaultActions[*].forward.targetGroups[*].weight"]});
+});
+
 
 export const lburl = lb.dnsName;
+export const lbarn = lb.arn
+
